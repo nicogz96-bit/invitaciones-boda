@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- ===== OPEN GRAPH (WHATSAPP, FACEBOOK, ETC) ===== -->
+  <meta property="og:title" content="Catalina & Nicolas — Nuestra boda 💍">
+  <meta property="og:description" content="Estás invitado a celebrar con nosotros este día tan especial. Haz clic para ver la invitación.">
+  <meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPO/preview.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPO/">
+
+  <!-- ===== TWITTER (OPCIONAL) ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>Catalina & Nicolas — Invitación</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5efe6, #f0e7d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 26px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #bb995b;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .loader {
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="title">Catalina & Nicolas</div>
+    <div class="subtitle">
+      Estás siendo redirigido a nuestra invitación 💍<br>
+      Un momento por favor...
+    </div>
+    <div class="loader">⏳ Cargando invitación...</div>
+  </div>
+
+  <script>
+    // ===== CONFIGURACIÓN =====
+    const APPS_SCRIPT_BASE = "https://script.google.com/macros/s/TU_DEPLOY_ID/exec";
+
+    // Lee ?grupo=g0, g1, etc desde GitHub URL
+    const params = new URLSearchParams(window.location.search);
+    const grupo = params.get("grupo");
+
+    // Construye URL final
+    let target = APPS_SCRIPT_BASE;
+
+    if (grupo) {
+      target += "?grupo=" + encodeURIComponent(grupo);
+    }
+
+    // Redirección elegante con pequeño delay (para que OG cargue)
+    setTimeout(() => {
+      window.location.replace(target);
+    }, 1200);
+  </script>
+
+</body>
+</html>
