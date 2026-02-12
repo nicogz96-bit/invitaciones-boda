@@ -10,86 +10,33 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nicogz96-bit.github.io/invitaciones-boda/">
 
-  <!-- ===== TWITTER (OPCIONAL) ===== -->
-  <meta name="twitter:card" content="summary_large_image">
-
-  <title>Catalina & Nicolas — Invitación</title>
-
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cargando invitación...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #f5efe6, #f0e7d8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      text-align: center;
-    }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 36px 26px;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .title {
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #bb995b;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-
-    .loader {
-      font-size: 14px;
-      color: #777;
-    }
-  </style>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
 
-  <div class="card">
-    <div class="title">Catalina & Nicolas</div>
-    <div class="subtitle">
-      Estás siendo redirigido a nuestra invitación 💍<br>
-      Un momento por favor...
-    </div>
-    <div class="loader">⏳ Cargando invitación...</div>
-  </div>
+  <h2>💌 Cargando tu invitación...</h2>
+  <p>Un momento por favor</p>
 
   <script>
-    // ===== CONFIGURACIÓN =====
-    const APPS_SCRIPT_BASE = "https://script.google.com/macros/s/AKfycbz2JKJe8JjihLHiX1uWRKErtPDtxvn5Xq4RGKB6PLWQtTlFLsEaoxQU3Hg1lvcvAnD28g/exec";
-
-    // Lee ?grupo=g0, g1, etc desde GitHub URL
     const params = new URLSearchParams(window.location.search);
-    const grupo = params.get("grupo");
+    const grupo = params.get('grupo');
 
-    // Construye URL final
-    let target = APPS_SCRIPT_BASE;
+    if (!grupo) {
+      document.body.innerHTML = "<h3>Invitación no válida</h3>";
+    } else {
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz2JKJe8JjihLHiX1uWRKErtPDtxvn5Xq4RGKB6PLWQtTlFLsEaoxQU3Hg1lvcvAnD28g/exec";
+      const destino = `${APPS_SCRIPT_URL}?grupo=${encodeURIComponent(grupo)}`;
 
-    if (grupo) {
-      target += "?grupo=" + encodeURIComponent(grupo);
+      // Redirección limpia
+      window.location.replace(destino);
     }
-
-    // Redirección elegante con pequeño delay (para que OG cargue)
-    setTimeout(() => {
-      window.location.replace(target);
-    }, 1200);
   </script>
 
 </body>
 </html>
+
